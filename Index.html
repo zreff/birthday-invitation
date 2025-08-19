@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на День Рождения</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #f9f0ff 0%, #e6f7ff 100%);
+            color: #5a5a5a;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(to right, #d9c5f2, #a5d8ff);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="2" fill="none" opacity="0.2"/></svg>');
+            background-size: 200px;
+            opacity: 0.3;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #6a3093;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .date {
+            font-size: 1.8rem;
+            font-weight: 500;
+            margin: 15px 0;
+            color: #6a3093;
+        }
+        
+        .time {
+            font-size: 1.4rem;
+            background: rgba(255, 255, 255, 0.7);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(106, 48, 147, 0.3);
+            color: #6a3093;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        h2 {
+            color: #6a3093;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #d9c5f2;
+        }
+        
+        .events {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin: 25px 0;
+        }
+        
+        .event {
+            flex: 1;
+            min-width: 280px;
+            background: rgba(217, 197, 242, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #d9c5f2;
+            transition: transform 0.3s ease;
+        }
+        
+        .event:hover {
+            transform: translateY(-5px);
+        }
+        
+        .event h3 {
+            color: #6a3093;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .event-duration {
+            background: #a5d8ff;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .photos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin: 25px 0;
+        }
+        
+        .photo {
+            flex: 1;
+            min-width: 280px;
+            max-width: 450px;
+            height: 250px;
+            background: linear-gradient(135deg, #e6f7ff 0%, #d9c5f2 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .photo img:hover {
+            transform: scale(1.05);
+        }
+        
+        .photo-placeholder {
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+            color: #6a3093;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .contact-info {
+            background: rgba(217, 197, 242, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #d9c5f2;
+            margin: 20px 0;
+        }
+        
+        .contact-info h3 {
+            color: #6a3093;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .contact-details {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .map-container {
+            height: 400px;
+            background: #e6f7ff;
+            border-radius: 15px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .static-map {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(106, 48, 147, 0.8);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .map-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 5px;
+            border: 1px solid white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .map-link:hover {
+            background: white;
+            color: #6a3093;
+        }
+        
+        .address {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            color: #6a3093;
+            font-weight: 500;
+        }
+        
+        .divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #d9c5f2, transparent);
+            margin: 30px 0;
+        }
+        
+        .note {
+            font-style: italic;
+            text-align: center;
+            margin-top: 30px;
+            color: #888;
+        }
+        
+        @media (max-width: 900px) {
+            .photos {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .photo {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .date {
+                font-size: 1.5rem;
+            }
+            
+            .events {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Приглашение на день рождения</h1>
+            <div class="date">28.08.2025</div>
+            <div class="time">Начало в 16:00</div>
+	    <div class="time">Приходить за 15 минут</div>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Программа мероприятия</h2>
+                <div class="events">
+                    <div class="event">
+                        <h3>Лазертаг</h3>
+                        <p>Захватывающая командная игра в современном лазертаг-арене с реалистичным антуражем и новейшим оборудованием.</p>
+                    </div>
+                    <div class="event">
+                        <h3>Банкет</h3>
+                        <p>Праздничный фуршет с вкусными угощениями, напитками и тортом в уютной атмосфере.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h2>Фотографии</h2>
+                <div class="photos">
+                    <div class="photo">
+                        <!-- Первая фотография -->
+                        <img src="https://i.ibb.co/PGpJBFYL/PWl4-G4-B6m-Qbus-BAY88-A94f-LYy-PGEKkx7-Yb-Eg-Oi-ZNm-Gtfw-UYUhz-VSpx-Qc6pv-W-Fh-Oz2-U3-Ezh-T5-MX5-Pw.jpg" 
+                             alt="Фото мероприятия" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Изображение не загружено</div>';">
+                    </div>
+                    <div class="photo">
+                        <!-- Вторая фотография -->
+                        <img src="https://i.ibb.co/whDStymN/QJKWZ7-IA1-Ta-TJMXDVLX4et-G64x6-On-Zgtz-Gx-PSmt-IO-ZEZy-k-Fgs-V38x6-Xzx-Pg-Gg-ISlou-Fk-P.jpg" 
+                             alt="Фото мероприятия" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Изображение не загружено</div>';">
+                    </div>
+                    <div class="photo">
+                        <!-- Третья фотография -->
+                        <img src="https://i.ibb.co/BHfJfkgy/3.jpg" 
+                             alt="Фото мероприятия" 
+                             onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'photo-placeholder\'>Изображение не загружено</div>';">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h2>Контактные данные</h2>
+                <div class="contact-info">
+                    <h3>Для связи с организатором:</h3>
+                    <div class="contact-details">
+                        <!-- ВСТАВЬТЕ КОНТАКТНЫЕ ДАННЫЕ ЗДЕСЬ -->
+                        <p>Имя: Тихомирова Оксана Григорьевна</p>
+                        <p>Телефон: 89106610220</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="divider"></div>
+            
+            <div class="section">
+                <h2>Место проведения</h2>
+                <div class="map-container">
+                    <!-- Статическое изображение карты с гиперссылкой -->
+                    <a href="https://yandex.ru/maps/?text=г. Кострома, ул. Комунаров, д. 26" target="_blank">
+                        <img src="https://static-maps.yandex.ru/1.x/?ll=40.916815,57.788861&z=16&l=map&size=650,400&pt=40.916815,57.788861,pm2rdl" 
+                             alt="Карта места проведения" class="static-map">
+                    </a>
+                    <div class="map-overlay">
+                        Нажмите на карту для открытия в Яндекс.Картах
+                        <br>
+                        <a href="https://yandex.ru/maps/?text=г. Кострома, ул. Комунаров, д. 26" target="_blank" class="map-link">
+                            Открыть карту
+                        </a>
+                    </div>
+                </div>
+                <div class="address">
+                    Лазертаг и банкет пройдут по адресу: г. Кострома, ул. Комунаров, д. 26
+                </div>
+            </div>
+            
+            <div class="note">
+                Просьба подтвердить участие до 26.08.2025
+            </div>
+        </div>
+    </div>
+</body>
+</html>
